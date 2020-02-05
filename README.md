@@ -29,6 +29,12 @@ cd fastapi-crud
 docker-compose up -d --build
 ```
 
+### Available Routes
+
+- [http://localhost:8888/ping](http://localhost:8888/ping)
+- [http://localhost:8888/docs](http://localhost:8888/docs)
+- [http://localhost:8888/notes](http://localhost:8888/notes)
+
 ## Run tests
 
 ```sh

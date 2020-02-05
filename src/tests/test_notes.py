@@ -22,3 +22,31 @@ def test_create_note(test_app, monkeypatch):
 def test_create_note_invalid_json(test_app):
     response = test_app.post("/notes/", data=json.dumps({"title": "test"}))
     assert response.status_code == 422
+
+
+def test_read_note(test_app, monkeypatch):
+    test_data = {
+        "id": 1,
+        "title": "get route",
+        "description": "tests the get route",
+    }
+
+    async def mock_get(id):
+        return test_data
+
+    monkeypatch.setattr(crud, "get", mock_get)
+
+    response = test_app.get("/notes/1")
+    assert response.status_code == 200
+    assert response.json() == test_data
+
+
+def test_read_note_incorrect_id(test_app, monkeypatch):
+    async def mock_get(id):
+        return None
+
+    monkeypatch.setattr(crud, "get", mock_get)
+
+    response = test_app.get("/notes/888")
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Note not found."

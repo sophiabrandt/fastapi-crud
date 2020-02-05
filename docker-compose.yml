@@ -1,0 +1,13 @@
+version: '2.4'
+
+services:
+
+  web:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    volumes:
+      - './src:/app:delegated'
+    ports:
+      - 8888:8000

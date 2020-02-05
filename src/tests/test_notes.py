@@ -23,6 +23,11 @@ def test_create_note_invalid_json(test_app):
     response = test_app.post("/notes/", data=json.dumps({"title": "test"}))
     assert response.status_code == 422
 
+    response = test_app.post(
+        "/notes/", data=json.dumps({"title": "x", "description": "y"})
+    )
+    assert response.status_code == 422
+
 
 def test_read_note(test_app, monkeypatch):
     test_data = {

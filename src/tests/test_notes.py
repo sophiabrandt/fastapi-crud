@@ -104,6 +104,9 @@ def test_update_note(test_app, monkeypatch):
         [1, {}, 422],
         [1, {"description": "bar"}, 422],
         [999, {"title": "foo", "description": "bar"}, 404],
+        [1, {"title": "1", "description": "bar"}, 422],
+        [1, {"title": "foo", "description": "1"}, 422],
+        [0, {"title": "foo", "description": "bar"}, 422],
     ],
 )
 def test_update_note_invalid(test_app, monkeypatch, id, payload, status_code):

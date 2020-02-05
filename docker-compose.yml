@@ -11,3 +11,26 @@ services:
       - './src:/app:delegated'
     ports:
       - 8888:8000
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/fastapi_dev
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    build:
+      context: ./src/db
+      dockerfile: Dockerfile
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=fastapi_dev
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+
+volumes:
+  postgres_data:

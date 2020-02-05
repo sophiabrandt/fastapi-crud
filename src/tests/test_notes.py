@@ -66,3 +66,38 @@ def test_read_all_notes(test_app, monkeypatch):
     response = test_app.get("/notes/")
     assert response.status_code == 200
     assert response.json() == test_data
+
+
+def test_update_note(test_app, monkeypatch):
+    test_update_data = {
+        "id": 1,
+        "title": "updated note",
+        "description": "tests put route",
+    }
+
+    async def mock_get(id):
+        return True
+
+    monkeypatch.setattr(crud, "put", mock_get)
+
+    response = test_app.put("/notes/1", data=json.dumps(test_update_data))
+    assert response.status_code == 200
+    assert response.json() == test_update_data
+
+
+@pytest.mark.parametrize(
+    "id, payload, status_code",
+    [
+        [1, {}, 422],
+        [1, {"description": "bar"}, 422],
+        [999, {"title": "foo", "description": "bar"}, 404],
+    ],
+)
+def test_update_note_invalid(test_app, monkeypatch, id, payload, status_code):
+    async def mock_get(id):
+        return None
+
+    monkeypatch.setattr(crud, "get", mock_get)
+
+    response = test_app.put(f"/notes/{id}/", data=json.dumps(payload),)
+    assert response.status_code == status_code

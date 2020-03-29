@@ -12,7 +12,7 @@
 
 The repository contains the code from [Developing and Testing an Asynchronous API with FastAPI and Pytest][testdriven], with minor modifications.
 
-See [original repo by Michael Herman][origrepo] by Michael Herman for more information.
+See [original repo by Michael Herman][origrepo] for more information.
 
 ## Install
 

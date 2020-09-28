@@ -4,30 +4,27 @@
 #
 #    pip-compile src/requirements.in
 #
-asyncpg==0.20.1
-attrs==19.3.0             # via pytest
-certifi==2019.11.28       # via requests
+asyncpg==0.20.1           # via -r src/requirements.in, databases
+attrs==20.2.0             # via pytest
+certifi==2020.6.20        # via requests
 chardet==3.0.4            # via requests
-click==7.0                # via uvicorn
-databases[postgresql]==0.2.6
-fastapi==0.48.0
-h11==0.9.0                # via uvicorn
-httptools==0.0.13         # via uvicorn
+click==7.1.2              # via uvicorn
+databases[postgresql]==0.2.6  # via -r src/requirements.in
+fastapi==0.48.0           # via -r src/requirements.in
+h11==0.10.0               # via uvicorn
 idna==2.8                 # via requests
-more-itertools==8.2.0     # via pytest
-packaging==20.1           # via pytest
+more-itertools==8.5.0     # via pytest
+packaging==20.4           # via pytest
 pluggy==0.13.1            # via pytest
-psycopg2-binary==2.8.4    # via databases
-py==1.8.1                 # via pytest
-pydantic==1.4             # via fastapi
-pyparsing==2.4.6          # via packaging
-pytest==5.3.5
-requests==2.22.0
-six==1.14.0               # via packaging
-sqlalchemy==1.3.13
+psycopg2-binary==2.8.6    # via databases
+py==1.9.0                 # via pytest
+pydantic==1.6.1           # via fastapi
+pyparsing==2.4.7          # via packaging
+pytest==5.3.5             # via -r src/requirements.in
+requests==2.22.0          # via -r src/requirements.in
+six==1.15.0               # via packaging
+sqlalchemy==1.3.13        # via -r src/requirements.in, databases
 starlette==0.12.9         # via fastapi
-urllib3==1.25.8           # via requests
-uvicorn==0.11.2
-uvloop==0.14.0            # via uvicorn
-wcwidth==0.1.8            # via pytest
-websockets==8.1           # via uvicorn
+urllib3==1.25.10          # via requests
+uvicorn==0.12.0           # via -r src/requirements.in
+wcwidth==0.2.5            # via pytest

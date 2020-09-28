@@ -55,7 +55,7 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 👤 **Sophia Brandt**
 
-- Website: https://www.sophiabrandt.com
+- Website: [https://www.sophiabrandt.com](https://www.sophiabrandt.com)
 - Twitter: [@hisophiabrandt](https://twitter.com/hisophiabrandt)
 - Github: [@sophiabrandt](https://github.com/sophiabrandt)
 
